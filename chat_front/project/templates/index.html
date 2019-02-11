@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col s12 m12">
+        <!--<div id="welcome"></div>-->
+        <div id="question">
+            <input id="question-id" type="hidden" value="">
+            <h5 class="header center orange-text" id="question-title"></h5>
+            <div id="question-answers"></div>
+        </div>
+    </div>
+</div>
+<div class="row center" id="start-off">
+    Esperando a conectarse...
+</div>
+<div class="row" id="start-on" style="display:none;">
+    <div id="msgs" class="row">
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <div id="msg"></div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
+
+{% endblock %}
+{% block footer %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12">
+            <form id="send_msg">
+                <div class="input-field">
+                    <input id="msg_input">
+                </div>
+                <button type="submit" class="btn-large waves-effect waves-light orange right">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/pyquiz_sockets.js') }}"></script>
+{% endblock %}

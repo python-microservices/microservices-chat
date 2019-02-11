@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debug
+  labels:
+    app: debug
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debug
+  template:
+    metadata:
+      labels:
+        app: debug
+    spec:
+      serviceAccountName: cluster-admin
+      containers:
+      - name: debug
+        image: ubuntu:16.04
+        command: ["/bin/bash"]
+        tty: true
+        ports:
+        - containerPort: 80

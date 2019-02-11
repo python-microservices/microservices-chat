@@ -1,0 +1,4 @@
+-r requirements.txt
+eventlet==0.24.1
+gunicorn==19.9.0
+psutil==5.4.8

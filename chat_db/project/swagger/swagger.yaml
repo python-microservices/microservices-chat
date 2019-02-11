@@ -1,0 +1,96 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: "Chat"
+  termsOfService: "https://github.com/python-microservices/microservices-chat"
+  contact:
+    email: "a.vara.1986@gmail.com"
+tags:
+- name: "project"
+  description: "Everything about your project"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /:
+    post:
+      tags:
+      - "messages"
+      summary: "Example endpoint return create a messages"
+      description: ""
+      operationId: "create_view"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: user_id
+        in: formData
+        type: string
+        required: true
+        description: "Id of the user"
+      - name: username
+        in: formData
+        type: string
+        required: true
+        description: "Username of the user"
+      - name: message
+        in: formData
+        type: string
+        required: true
+        description: "Message"
+      responses:
+        200:
+          description: "Message created"
+          schema:
+            $ref: '#/definitions/message'
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "project.views.views"
+    get:
+      tags:
+      - "messages"
+      summary: "Example endpoint return a list of messages"
+      description: ""
+      operationId: "list_view"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "A list of messages"
+          schema:
+            $ref: '#/definitions/message'
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "messages not found"
+        405:
+          description: "Validation exception"
+      x-swagger-router-controller: "project.views.views"
+
+  
+
+definitions:
+      message:
+        type: "object"
+        properties:
+          id:
+            type: "string"
+          timestamp:
+            type: "string"
+          user_id:
+            type: "string"
+          username:
+            type: "string"
+          message:
+            type: "string"
+      
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
