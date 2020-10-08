@@ -1,10 +1,11 @@
 pyms:
-  requests:
-    data: ""
-ms:
-  DEBUG: false
-  TESTING: false
-  APP_NAME: project
-  APPLICATION_ROOT : /
-  SECRET_KEY: "gjr39dkjn344_!67#"
-  service_host: http://chat-db:80/
+  services:
+    requests:
+      data: ""
+  config:
+    DEBUG: false
+    TESTING: false
+    APP_NAME: project
+    APPLICATION_ROOT : /
+    SECRET_KEY: "gjr39dkjn344_!67#"
+    service_host: http://chat-db:80/

@@ -1,7 +1,13 @@
-ms:
-  DEBUG: true
-  TESTING: true
-  APP_NAME: project
-  APPLICATION_ROOT : /
-  SECRET_KEY: "gjr39dkjn344_!67#"
-  service_host: http://localhost:8080
+pyms:
+  services:
+    tracer:
+      client: "jaeger"
+      host: "localhost"
+      component_name: "Chat DaaS"
+  config:
+    DEBUG: true
+    TESTING: true
+    APP_NAME: project
+    APPLICATION_ROOT : /
+    SECRET_KEY: "gjr39dkjn344_!67#"
+    service_host: http://localhost:8080

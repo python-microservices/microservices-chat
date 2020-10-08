@@ -1,7 +1,16 @@
-ms:
-  DEBUG: false
-  TESTING: false
-  APP_NAME: project
-  APPLICATION_ROOT : /
-  SECRET_KEY: "gjr39dkjn344_!67#"
-  service_host: http://svc.127.0.0.1.nip.io
+pyms:
+  services:
+    swagger:
+      path: "swagger"
+      file: "swagger.yaml"
+    tracer:
+      client: "jaeger"
+      host: "localhost"
+      component_name: "Chat DaaS"
+  config:
+    DEBUG: false
+    TESTING: false
+    APP_NAME: project
+    APPLICATION_ROOT : /
+    SECRET_KEY: "gjr39dkjn344_!67#"
+    service_host: http://svc.127.0.0.1.nip.io
