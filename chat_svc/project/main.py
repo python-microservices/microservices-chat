@@ -13,7 +13,7 @@ __version__ = "0.1.0"
 
 socketio = SocketIO()
 
-ms = Microservice(service="ms", path=__file__)
+ms = Microservice(path=__file__)
 app = ms.create_app()
 
 users_connected = []
