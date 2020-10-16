@@ -35,6 +35,13 @@ By starting Minikube, a single-node cluster is created. Run the following comman
 minikube start
 ```
 
+
+Install ingress
+
+```
+minikube addons enable ingress
+```
+
 Set the environment of docker
 ```bash
 eval $(minikube docker-env)
@@ -189,5 +196,11 @@ Install helm charts:
 Open http://127.0.0.1.nip.io/ and see the magic! ;)
 
 If this URL doesn't work, maybe you need to install a nginx and redirect the traffic from 127.0.0.1 to the minikube IP.
+
+Check your Minikube IP with:
+
+```
+minikube ip
+```
 
 See [this example](nginx_example_conf)
