@@ -83,5 +83,5 @@ def create_app():
     return the app and the database objects.
     :return:
     """
-    socketio.init_app(app, logger=True)
+    socketio.init_app(app, logger=True, cors_allowed_origins="*")
     return app

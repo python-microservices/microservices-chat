@@ -24,6 +24,8 @@ ingress:
   paths: ["/"]
   hosts:
     - 127.0.0.1.nip.io
+    - 192.168.99.100.nip.io
+    - 192.168.49.2.nip.io
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:

@@ -1,3 +1,2 @@
-Flask-Script==2.0.6
-py-ms>=2.6.1
+py-ms[all]>=2.6.1
 Flask-SocketIO==3.2.1

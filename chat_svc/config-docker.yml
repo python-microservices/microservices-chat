@@ -2,9 +2,6 @@ pyms:
   services:
     requests:
       data: ""
-    swagger:
-      path: "swagger"
-      file: "swagger.yaml"
     tracer:
       client: "jaeger"
       host: "localhost"

@@ -1,5 +1,4 @@
 var namespace = '/chat';
-//var socket = io.connect('//' + document.domain + ':' + location.port + namespace);
 var socket = io.connect(service_host + namespace);
 
 var user_id = "";

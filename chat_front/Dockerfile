@@ -1,20 +1,17 @@
-FROM python:3.6.4-alpine3.7
+FROM python:3.7.5-slim
 
-RUN apk add --update curl gcc g++ git libffi-dev openssl-dev python3-dev build-base linux-headers \
-    && rm -rf /var/cache/apk/*
-RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+RUN apt-get update && apt-get install -y git gcc python3-dev
 
 ENV PYTHONUNBUFFERED=1 APP_HOME=/microservice/ CONFIGMAP_FILE="$APP_HOME"config-docker.yml
 
-RUN mkdir $APP_HOME && adduser -S -D -H python && chown -R python $APP_HOME
+RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD requirement*.txt $APP_HOME
-RUN pip install --upgrade pip && pip install -r requirements-docker.txt
+RUN pip install --upgrade pip && pip install -r requirements-docker.txt --pre
 
 ADD . $APP_HOME
 
 EXPOSE 8080
-USER python
 
-CMD ["gunicorn", "--worker-class", "gevent", "--workers", "1", "--log-level", "INFO", "--bind", "0.0.0.0:8080", "manage:app"]
+ENTRYPOINT ["python", "manage.py"]
