@@ -195,12 +195,16 @@ Install helm charts:
 
 Open http://127.0.0.1.nip.io/ and see the magic! ;)
 
-If this URL doesn't work, maybe you need to install a nginx and redirect the traffic from 127.0.0.1 to the minikube IP.
+If this URL doesn't work, maybe you need to install a nginx and redirect the traffic from 127.0.0.1 to the minikube IP,
+for example, you can use nginx.
 
-Check your Minikube IP with:
 
-```
-minikube ip
-```
+- Check your Minikube IP with:
+  ```
+  minikube ip
+  ```
+- Edit your nginx config with this code as example: See [this example](nginx_example_conf)
+  ```
+  vim /etc/nginx/sites-enabled/default
+  ```
 
-See [this example](nginx_example_conf)
