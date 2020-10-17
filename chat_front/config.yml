@@ -1,9 +1,7 @@
 pyms:
   services:
-    tracer:
-      client: "jaeger"
-      host: "localhost"
-      component_name: "Chat DaaS"
+    requests:
+      data: ""
   config:
     DEBUG: true
     TESTING: true

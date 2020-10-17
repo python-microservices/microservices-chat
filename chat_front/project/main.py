@@ -8,7 +8,7 @@ __version__ = "0.1.0"
 
 from pyms.flask.app import Microservice
 
-ms = Microservice(service="ms", path=__file__)
+ms = Microservice(path=__file__)
 app = ms.create_app()
 
 

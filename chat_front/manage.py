@@ -1,9 +1,4 @@
-# encoding: utf-8
-from flask_script import Manager
-
 from project.main import app
 
-manager = Manager(app)
-
 if __name__ == '__main__':
-    manager.run()
+    app.run(host='0.0.0.0', port=8080, debug=True)

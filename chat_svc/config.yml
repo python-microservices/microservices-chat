@@ -1,13 +1,11 @@
 pyms:
-  requests:
-    data: ""
-  swagger:
-    path: "swagger"
-    file: "swagger.yaml"
-  tracer:
-    client: "jaeger"
-    host: "localhost"
-    component_name: "Chat BaaS"
+  services:
+    requests:
+      data: ""
+    tracer:
+      client: "jaeger"
+      host: "localhost"
+      component_name: "Chat BaaS"
   config:
     DEBUG: true
     TESTING: true

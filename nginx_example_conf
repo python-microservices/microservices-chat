@@ -26,6 +26,7 @@ server {
 
 	location / {
 		# http://192.168.99.100 Is the Internal IP of your Minikube cluster
+		# Replace this IP with `minikube ip` command
 		proxy_pass http://192.168.99.100;
 		proxy_set_header Host $host;
 	}
