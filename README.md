@@ -8,6 +8,17 @@ the [scaffold](https://github.com/python-microservices/microservices-scaffold).
 
 The tutorial of "how to create a cluster" is based of this [bitnami tutorial](https://docs.bitnami.com/kubernetes/get-started-kubernetes/)
 
+# The project
+- **chat_front:** Is a simple webpage that sends and receives messages from chat_svc through socket io
+  When you finish this tutorial, you can see this Microservice in 127.0.0.1.nip.io
+- **chat_svc:** Receives messages from chat_front and sends these messages to  chat_db to store this information
+  When you finish this tutorial, you can see this Microservice in svc.127.0.0.1.nip.io
+- **chat_db:** Receives data from chat_svc and stores this information in a SQLite DB.
+
+## Architecture
+
+![](docs/imgs/architecture.png)
+
 
 ## Step 1: Configure The Platform
 The first step for working with Kubernetes clusters is to have Minikube installed if you have selected to work locally.
@@ -172,7 +183,6 @@ Create the docker images:
   docker build -t chat_db:v1 -f chat_db/Dockerfile chat_db/
   docker build -t chat_svc:v1 -f chat_svc/Dockerfile chat_svc/
   docker build -t chat_front:v1 -f chat_front/Dockerfile chat_front/
-
   ```
   
 Check your helm charts:
@@ -191,18 +201,43 @@ Install helm charts:
   helm install --name chat-front ./chat_front/chat_front/
   ```
 
-# Step 6
+## Step 6
+
+Verify that all pods are Ok:
+
+  ```bash
+  kubectl get pods
+  ```
+
+![](docs/imgs/pods.png)
+
+## Step 7
 
 Open http://127.0.0.1.nip.io/ and see the magic! ;)
+
+![](docs/imgs/front_ms.png)
+
+
+## Troubleshooting
 
 If this URL doesn't work, maybe you need to install a nginx and redirect the traffic from 127.0.0.1 to the minikube IP,
 for example, you can use nginx.
 
-
-- Check your Minikube IP with:
+### Way 1: Get your cluster with minikube
+Check your Minikube IP with:
   ```
   minikube ip
   ```
+  
+### Way 2: Get your cluster with kubectl
+
+  ```
+  kubectl cluster-info
+  ```
+![](docs/imgs/kubectl_get_ip.png)
+
+### Add your cluster IP to nginx
+
 - Edit your nginx config with this code as example: See [this example](nginx_example_conf)
   ```
   vim /etc/nginx/sites-enabled/default

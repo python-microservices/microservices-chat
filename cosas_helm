@@ -1,0 +1,29 @@
+  helm install --name database stable/postgresql
+
+"postgres://postgres:v9dOnoDrbe@database-postgresql:5432/chat"
+
+
+NOTES:
+
+
+** Please be patient while the chart is being deployed **
+
+PostgreSQL can be accessed via port 5432 on the following DNS name from within your cluster:
+
+    database-postgresql.default.svc.cluster.local
+
+To get the password for "postgres" run:
+
+    export POSTGRESQL_PASSWORD=$(kubectl get secret --namespace default database-postgresql -o jsonpath="{.data.postgresql-password}" | base64 --decode)
+
+To connect to your database run the following command:
+
+    kubectl run database-postgresql-client --rm --tty -i --restart='Never' --namespace default --image bitnami/postgresql --env="PGPASSWORD=$POSTGRESQL_PASSWORD" --command -- psql --host database-postgresql -U postgres
+
+
+
+To connect to your database from outside the cluster execute the following commands:
+
+    kubectl port-forward --namespace default svc/database-postgresql 5432:5432 &
+    psql --host 127.0.0.1 -U postgres
+
