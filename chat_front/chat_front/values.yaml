@@ -17,15 +17,12 @@ service:
   port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   paths: ["/"]
-  hosts:
-    - 127.0.0.1.nip.io
-    - 192.168.99.100.nip.io
-    - 192.168.49.2.nip.io
+  hosts: []
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
