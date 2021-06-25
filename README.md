@@ -70,7 +70,7 @@ In order to start working on a Kubernetes cluster, it is necessary to install th
   chmod +x ./kubectl
   sudo mv ./kubectl /usr/local/bin/kubectl
   ```
-  
+
   TIP: Once the kubectl CLI is installed, you can obtain information about the current version with the kubectl version command.
 
   NOTE: You can also install kubectl by using the `sudo apt-get install kubectl` command. If you use homebrew you can install it with the brew install command: `brew install kubectl`.
@@ -80,13 +80,13 @@ In order to start working on a Kubernetes cluster, it is necessary to install th
   ```bash
   kubectl cluster-info
   ```
-  
+
   NOTE: The kubectl cluster-info command shows the IP addresses of the Kubernetes node master and its services.
 
   ![Check Kubernetes cluster info](https://docs.bitnami.com/images/img/platforms/kubernetes/k8-tutorial-31.png)
 
 * You can also verify the cluster by checking the nodes. Use the following command to list the connected nodes:
-  
+
   ```bash
   kubectl get nodes
   ```
@@ -102,7 +102,7 @@ In order to start working on a Kubernetes cluster, it is necessary to install th
 
 [Learn more about the kubectl CLI](https://kubernetes.io/docs/user-guide/kubectl-overview/).
 
-## Step 4: Install Helm 
+## Step 4: Install Helm
 The easiest way to run and manage applications in a Kubernetes cluster is using Helm. Helm allows you to perform key operations for managing applications such as install, upgrade or delete.
 
 * To install Helm, run the following commands:
@@ -112,7 +112,7 @@ The easiest way to run and manage applications in a Kubernetes cluster is using 
   chmod 700 get_helm.sh
   ./get_helm.sh
   ```
-  
+
   TIP: If you use homebrew you can install it with the brew install command: `brew install kubernetes-helm`.
 
 Once you have installed Helm, a set of useful commands to perform common actions is shown below:
@@ -128,13 +128,13 @@ Create the docker images:
   docker build -t chat_svc:v1 -f chat_svc/Dockerfile chat_svc/
   docker build -t chat_front:v1 -f chat_front/Dockerfile chat_front/
   ```
-  
+
 Check your helm charts:
 
   ```bash
   helm upgrade --dry-run --install chat-front ./chat_front/chat_front/ \
     --set ingress.enabled=true --set "ingress.hosts[0]=$(minikube ip).nip.io"
-  helm upgrade --dry-run --install chat-svc ./chat_svc/chat_svc/ --set \
+  helm upgrade --dry-run --install chat-svc ./chat_svc/chat_svc/ \
     --set ingress.enabled=true --set "ingress.hosts[0]=svc.$(minikube ip).nip.io"
   helm upgrade --dry-run --install chat-db ./chat_db/chat_db/
   ```
@@ -144,7 +144,7 @@ Install helm charts:
   ```bash
   helm upgrade --install chat-front ./chat_front/chat_front/ \
     --set ingress.enabled=true --set "ingress.hosts[0]=$(minikube ip).nip.io"
-  helm upgrade --install chat-svc ./chat_svc/chat_svc/ --set \
+  helm upgrade --install chat-svc ./chat_svc/chat_svc/ \
     --set ingress.enabled=true --set "ingress.hosts[0]=svc.$(minikube ip).nip.io"
   helm upgrade --install chat-db ./chat_db/chat_db/
   ```
